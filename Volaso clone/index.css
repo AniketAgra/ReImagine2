@@ -15,62 +15,9 @@ body {
   width: 100%;
 }
 
-.hero{
-  width: 100%;
-  height: 100vh;
-  background: url(img/bg.jpg);
-  background-position: center;
-  background-size: cover;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.hero .text{
-  width: 90%;
-  margin-top: 10%;
-}
-.hero .text h4{
-  font-size: 40px;
-  color: #fff;
-  font-weight: 500;
-  margin-bottom: 10px;
-}
-.hero .text h1{
-  color: #fff;
-  font-size: 65px;
-  text-transform: uppercase;
-  line-height: 1;
-  margin-bottom: 30px;
-}
-.hero .text h1 span{
-  color: #07dd07;
-  font-size: 80px;
-  font-weight: bold;
-}
-.hero .text p{
-  color: #fff;
-  margin-bottom: 30px;
-}
-
-.hero .text .btn{
-  padding: 10px 30px;
-  background-color: #ffffff;
-  text-decoration: none;
-  text-transform: uppercase;
-  color: #000000;
-  font-weight: bold;
-  border-radius: 30px;
-  border: 2px solid #010101;
-  transition: 0.3s;
-  z-index: 11;
-}
-.hero .text .btn:hover{
-  background-color: transparent;
-}
-
 .cursor {
-  height: 20px;
-  width: 20px;
+  height: 10px;
+  width: 10px;
   /* background-color: #95c11e; */
   position: fixed;
   border-radius: 50%;
@@ -195,7 +142,60 @@ body {
   width: 100%;
 }
 
+.hero{
+  width: 100%;
+  height: 100vh;
+  background: url(img/bg.jpg);
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.hero .text{
+  width: 90%;
+  margin-top: 12%;
+}
+.hero .text h4{
+  font-size: 40px;
+  color: #fff;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+.hero .text h1{
+  color: #fff;
+  font-size: 65px;
+  text-transform: uppercase;
+  line-height: 1;
+  margin-bottom: 30px;
+}
+.hero .text h1 span{
+  color: #07dd07;
+  font-size: 80px;
+  font-weight: bold;
+}
+.hero .text p{
+  color: #fff;
+  margin-bottom: 30px;
+}
 
+.hero .text .btn{
+  padding: 10px 30px;
+  background-color: #ffffff;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #000000;
+  font-weight: bold;
+  border-radius: 30px;
+  border: 2px solid #010101;
+  transition: 0.3s;
+}
+.hero .text .btn:hover{
+  background-color: black;
+  opacity: 0.6;
+  transition: opacity 0.6s ease;
+  text-decoration: underline;
+}
 
 main {
   position: relative;
@@ -510,6 +510,140 @@ main {
 .page-4 #page-4-a4 input:hover {
   cursor: pointer;
 }
+
+
+.banner{
+  width: 100%;
+  height: 100vh;
+  text-align: center;
+  overflow: hidden;
+  position: relative;
+  margin-top:8%;
+}
+.banner .slider{
+  position: absolute;
+  width: 200px;
+  height: 250px;
+  top: 10%;
+  left: calc(50% - 100px);
+  transform-style: preserve-3d;
+  transform: perspective(1000px);
+  animation: autoRun 20s linear infinite;
+  z-index: 2;
+}
+@keyframes autoRun{
+  from{
+      transform: perspective(1000px) rotateX(-16deg) rotateY(0deg);
+  }to{
+      transform: perspective(1000px) rotateX(-16deg) rotateY(360deg);
+  }
+}
+
+.banner .slider .item{
+  position: absolute;
+  inset: 0 0 0 0;
+  transform: 
+      rotateY(calc( (var(--position) - 1) * (360 / var(--quantity)) * 1deg))
+      translateZ(550px);
+}
+.banner .slider .item img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.banner .content{
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(1400px, 100vw);
+  height: max-content;
+  padding-bottom: 100px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1;
+}
+.banner .content h1{
+  font-family: 'ICA Rubrik';
+  font-size: 16em;
+  line-height: 1em;
+  color: #25283B;
+  position: relative;
+}
+.banner .content h1::after{
+  position: absolute;
+  inset: 0 0 0 0;
+  content: attr(data-content);
+  z-index: 2;
+  -webkit-text-stroke: 2px #d2d2d2;
+  color: transparent;
+}
+.banner .content .author{
+  font-family: Poppins;
+  text-align: right;
+  max-width: 200px;
+}
+.banner .content h2{
+  font-size: 3em;
+}
+.banner .content .model{
+  background-image: url(images/model.png);
+  width: 100%;
+  height: 75vh;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background-size: auto 130%;
+  background-repeat: no-repeat;
+  background-position: top center;
+  z-index: 1;
+}
+@media screen and (max-width: 1023px) {
+  .banner .slider{
+      width: 160px;
+      height: 200px;
+      left: calc(50% - 80px);
+  }
+  .banner .slider .item{
+      transform: 
+          rotateY(calc( (var(--position) - 1) * (360 / var(--quantity)) * 1deg))
+          translateZ(300px);
+  }
+  .banner .content h1{
+      text-align: center;
+      width: 100%;
+      text-shadow: 0 10px 20px #000;
+      font-size: 7em;
+  }
+  .banner .content .author{
+      color: #fff;
+      padding: 20px;
+      text-shadow: 0 10px 20px #000;
+      z-index: 2;
+      max-width: unset;
+      width: 100%;
+      text-align: center;
+      padding: 0 30px;
+  }
+}
+@media screen and (max-width: 767px) {
+  .banner .slider{
+      width: 100px;
+      height: 150px;
+      left: calc(50% - 50px);
+  }
+  .banner .slider .item{
+      transform: 
+          rotateY(calc( (var(--position) - 1) * (360 / var(--quantity)) * 1deg))
+          translateZ(180px);
+  }
+  .banner .content h1{
+      font-size: 5em;
+  }
+}
+
 .page-5 {
   position: relative;
   height: 100%;
@@ -733,7 +867,7 @@ input:checked + label .description {
 .elem h3 {
   height: 100%;
   width: 100%;
-  background-color: rgb(165, 165, 165);
+  background-color:transparent;
   position: absolute;
   display: flex;
   align-items: center;
@@ -742,14 +876,14 @@ input:checked + label .description {
   font-size: 40px;
   font-weight: 800;
   z-index: 10;
-  transition: all ease 0.5s;
+  /* transition: all ease 0.5s; */
 }
 
 .elem img {
   height: 100%;
   width: 100%;
   object-fit: cover;
-  transition: all ease 0.5s;
+  /* transition: all ease 0.5s; */
   scale: 1.1;
 }
 .elem:hover {
@@ -759,9 +893,11 @@ input:checked + label .description {
 .elem:hover h3 {
   background-color: transparent;
 }
+
 .elem:hover img {
   scale: 1;
 }
+ 
 .page-7 h1 {
   font-size: 80px;
   font-weight: 900;
@@ -780,6 +916,9 @@ input:checked + label .description {
   display: flex;
   flex-direction: column;
   position: relative;
+  margin-bottom: 25%;
+  border-bottom-left-radius: 50px;
+  border-bottom-right-radius: 50px;
 }
 #page-8-a {
   height: 60vh;
@@ -787,7 +926,7 @@ input:checked + label .description {
   padding: 70px;
 }
 #page-8-a h1 {
-  font-size: 50px;
+  font-size: 70px;
 }
 #page-8-a p {
   font-size: 30px;
@@ -810,14 +949,14 @@ input:checked + label .description {
   display: flex;
   position: relative;
   cursor: pointer;
-  z-index: 100;
+  z-index: 10;
   background-color: white;
   color: black;
 }
 #page-8-b #card h3 {
   height: 100%;
   width: 100%;
-  background-color: black;
+  background-color:transparent;
   position: absolute;
   display: flex;
   align-items: center;
@@ -868,7 +1007,7 @@ input:checked + label .description {
   object-fit: cover;
   overflow: hidden;
   display: flex;
-  z-index: 110;
+  z-index: 10;
 }
 .page-9 {
   height: 100%;
@@ -889,7 +1028,7 @@ input:checked + label .description {
   margin-top: 30px;
   border-radius: 10px;
   height: 90vh;
-  z-index: 110;
+  z-index: 10;
 }
 #page-9-a {
   height: 60vh;
@@ -906,6 +1045,7 @@ input:checked + label .description {
   height: 100%;
   width: 45%;
 }
+
 #page-9-a #page-9-a-2 {
   display: flex;
   flex-direction: column;
@@ -936,12 +1076,12 @@ input:checked + label .description {
   justify-content: space-between;
   flex-direction: column;
   color: white;
-  z-index: 121;
+  z-index: 21;
 }
 #footer-a {
   height: 100%;
   width: 100%;
-  background-color: #181e22;
+  background-color: #000000;
   display: flex;
   justify-content: space-between;
 
@@ -969,7 +1109,7 @@ input:checked + label .description {
   cursor: pointer;
   margin-top: 25px;
   font-size: 15px;
-  z-index: 120;
+  z-index: 20;
 }
 #footer-3 {
   display: flex;
@@ -982,7 +1122,7 @@ input:checked + label .description {
   cursor: pointer;
   font-size: 15px;
   margin-top: 25px;
-  z-index: 120;
+  z-index: 20;
 }
 #footer-4 {
   display: flex;
@@ -995,7 +1135,7 @@ input:checked + label .description {
   cursor: pointer;
   font-size: 15px;
   margin-top: 25px;
-  z-index: 120;
+  z-index: 20;
 }
 #footer-5 {
   display: flex;
@@ -1008,7 +1148,7 @@ input:checked + label .description {
   cursor: pointer;
   font-size: 15px;
   margin-top: 25px;
-  z-index: 120;
+  z-index: 20;
 }
 #footer-6 {
   display: flex;
@@ -1028,7 +1168,7 @@ input:checked + label .description {
   transition: all 0.3s ease;
 }
 #footer-6 a {
-  z-index: 120;
+  z-index: 20;
   cursor: pointer;
 }
 #footer-b {
@@ -1132,7 +1272,7 @@ input:checked + label .description {
 #loader h1 {
   font-size: 4vw;
   color: transparent;
-  background: linear-gradient(to right, rgb(239, 84, 195), rgb(148, 0, 96));
+  background: linear-gradient(to right, rgb(50, 239, 110), rgb(0, 148, 91));
   -webkit-background-clip: text;
   position: absolute;
   opacity: 0;

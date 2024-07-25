@@ -73,6 +73,21 @@ gsap.from(".page-3 h1", {
 }
 });
 
+
+gsap.from(".page-7 h1", {
+  y:-100,
+  opacity:0,
+  rotationX: 360,
+  duration: 2,
+  ease: "power2.inOut",
+  scrollTrigger:{
+    trigger:".page-7 h1",
+    scroller:"body",
+    start:"top 80%",
+    scrub:2
+}
+});
+
 gsap.registerPlugin(ScrollTrigger);
 
 document.addEventListener("DOMContentLoaded", function() {
@@ -107,7 +122,7 @@ gsap.from(".container", {
 
 gsap.from("#w1",{
   opacity:0,
-  y:-100,
+  y:100,
   duration:2,
   scrollTrigger:{
       trigger:"#w1",
@@ -120,22 +135,22 @@ gsap.from("#w1",{
 })
 
 gsap.from("#w2",{
-  opacity:0.5,
+  opacity:0,
   y:100,
   duration:2,
   scrollTrigger:{
       trigger:"#w2",
       scroller:"body",
-      start:"top 40%",
-      end:"top 50%",
-      scrub:5
+      start:"top 30%",
+      end:"top 30%",
+      scrub:2
   }
 
 })
 
 gsap.from("#w3",{
   opacity:0,
-  y:-100,
+  y:100,
   duration:2,
   scrollTrigger:{
       trigger:"#w3",
@@ -189,10 +204,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
 let heroBg = document.querySelector('.hero');
 
-        setInterval(() => {
-            heroBg.style.backgroundImage = "url(img/a-sleek-and-modern-website-design-featuring-an-ola-7tCES3T8SkOKZcSnMiIIKA-RamuD-tuTRKcMlG3Gszn1w.jpeg)"
-            
-            setTimeout(() => {
-                heroBg.style.backgroundImage = "url(img/-RamuD-tuTRKcMlG3Gszn1w.jpeg)"
-            }, 1000);
-        }, 2200);
+setInterval(() => {
+    heroBg.style.backgroundImage = "url(img/a-sleek-and-modern-website-design-featuring-an-ola-7tCES3T8SkOKZcSnMiIIKA-RamuD-tuTRKcMlG3Gszn1w.jpeg)"
+    
+    setTimeout(() => {
+        heroBg.style.backgroundImage = "url(img/-RamuD-tuTRKcMlG3Gszn1w.jpeg)"
+    }, 1000);
+}, 2200);
+
+feather.replace()
